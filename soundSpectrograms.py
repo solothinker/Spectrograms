@@ -49,10 +49,10 @@ hanningWindow = np.hanning(windowSize)
 freqBins = int(windowSize // 2+1)
 Spectrogram = np.empty((frames, freqBins))
 
-for frame in range(frames):
+for frame in range(frames-1):
     temp = frame*stepSize
     startFrame,endFrame=temp,temp+windowSize
-    print(startFrame,endFrame)
+    # print(startFrame,endFrame)
     smoothData = soundData[startFrame:endFrame]*hanningWindow
     fftData = np.fft.rfft(smoothData)
     # plt.subplot(2,1,1)
@@ -66,9 +66,8 @@ for frame in range(frames):
     Spectrogram[frame-1] = np.absolute(fftData)
 
 height = Spectrogram.T.shape[0]
-X = np.arange(samplingRate, step=height + 1)
+X = np.arange(samplingRate, step=height)
 Y = np.fft.rfftfreq(windowSize, d=1./samplingRate)
-print(X,Y)
 plt.pcolormesh(X, Y, Spectrogram.T, cmap='viridis', shading='auto')
 plt.colorbar()
 plt.show()
