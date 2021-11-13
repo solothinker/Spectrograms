@@ -5,7 +5,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-fileName = "1-103995-A-30.wav"
+# fileName = "1-103995-A-30.wav"
+fileName = "1-100038-A-14.wav"
 response = requests.get(f"https://github.com/karolpiczak/ESC-50/raw/master/audio/{fileName}")
 
 with open(fileName, "wb") as f:
@@ -38,7 +39,7 @@ samplingRate = 16000
 soundData = downSampling(fileName, samplingRate)
 soundData = soundData[:samplingRate]
 
-# defining the window saize and step size
+# defining the window size and step size
 windowSize = 256
 stepSize = 128
 

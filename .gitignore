@@ -7,3 +7,5 @@
 .idea/vcs.xml
 .idea/workspace.xml
 1-103995-A-30.wav
+*.wav
+CMSIS_5/
